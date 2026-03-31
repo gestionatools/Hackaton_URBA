@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react'
 
 const TEXT_FIELDS = [
   { key: 'referencia_catastral', label: 'Referencia Catastral' },
+  { key: 'titular_NIF', label: 'Titular NIF' },
   { key: 'municipio', label: 'Municipio' },
   { key: 'clase_suelo', label: 'Clase de Suelo' },
   { key: 'categoria_suelo', label: 'Categoría de Suelo' },
@@ -28,7 +29,7 @@ const NUM_FIELDS = [
 ]
 
 const ALL_COLUMNS = [
-  'ID', 'referencia_catastral', 'municipio', 'clase_suelo', 'categoria_suelo',
+  'ID', 'referencia_catastral', 'titular_NIF', 'municipio', 'clase_suelo', 'categoria_suelo',
   'ambito_planeamiento', 'ambito_codigo', 'unidad_ejecucion', 'zonificacion',
   'subzonificacion', 'ordenanza', 'instrumento_planeamiento',
   'edificabilidad_m2m2', 'ocupacion_maxima_pct', 'altura_max_plantas',
