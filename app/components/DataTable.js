@@ -16,6 +16,7 @@ const TEXT_FIELDS = [
   { key: 'ordenanza', label: 'Ordenanza' },
   { key: 'instrumento_planeamiento', label: 'Instrumento Planeamiento' },
   { key: 'licencia_urbanistica', label: 'Licencia Urbanística' },
+  { key: 'construccion_fecha', label: 'Fecha Construcción' },
 ]
 
 const NUM_FIELDS = [
@@ -34,6 +35,7 @@ const ALL_COLUMNS = [
   'subzonificacion', 'ordenanza', 'instrumento_planeamiento',
   'edificabilidad_m2m2', 'ocupacion_maxima_pct', 'altura_max_plantas',
   'superficie_parcela_m2', 'licencia_urbanistica', 'longitud', 'latitud', 'doc_url',
+  'construccion_fecha',
 ]
 
 const styles = {
