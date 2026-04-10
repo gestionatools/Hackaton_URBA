@@ -100,7 +100,48 @@ export default async function ColoniasFelinasPage() {
         >
           ← Volver
         </a>
-        <h1 style={{ margin: 0 }}>Colonias Felinas</h1>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <svg
+            width="44"
+            height="44"
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{ flexShrink: 0 }}
+          >
+            {/* Orejas */}
+            <polygon points="16,50 29,6 46,42" fill="#1a1a1a" />
+            <polygon points="84,50 71,6 54,42" fill="#1a1a1a" />
+            {/* Relleno interior de orejas */}
+            <polygon points="22,46 30,18 43,42" fill="#d97706" />
+            <polygon points="78,46 70,18 57,42" fill="#d97706" />
+            {/* Cabeza */}
+            <circle cx="50" cy="60" r="36" fill="#1a1a1a" />
+            {/* Ojos blancos */}
+            <ellipse cx="37" cy="54" rx="7" ry="9" fill="white" />
+            <ellipse cx="63" cy="54" rx="7" ry="9" fill="white" />
+            {/* Pupilas verticales */}
+            <ellipse cx="37" cy="55" rx="3" ry="7" fill="#111" />
+            <ellipse cx="63" cy="55" rx="3" ry="7" fill="#111" />
+            {/* Brillo en los ojos */}
+            <circle cx="39" cy="51" r="1.5" fill="white" />
+            <circle cx="65" cy="51" r="1.5" fill="white" />
+            {/* Nariz */}
+            <polygon points="50,67 45,73 55,73" fill="#e11d48" />
+            {/* Boca */}
+            <path d="M 45 73 Q 50 79 55 73" stroke="#e11d48" strokeWidth="1.5" fill="none" />
+            <line x1="42" y1="73" x2="45" y2="73" stroke="#e11d48" strokeWidth="1.5" />
+            <line x1="55" y1="73" x2="58" y2="73" stroke="#e11d48" strokeWidth="1.5" />
+            {/* Bigotes izquierda */}
+            <line x1="4" y1="65" x2="42" y2="70" stroke="white" strokeWidth="1.8" />
+            <line x1="2" y1="72" x2="42" y2="73" stroke="white" strokeWidth="1.8" />
+            <line x1="4" y1="79" x2="42" y2="76" stroke="white" strokeWidth="1.8" />
+            {/* Bigotes derecha */}
+            <line x1="96" y1="65" x2="58" y2="70" stroke="white" strokeWidth="1.8" />
+            <line x1="98" y1="72" x2="58" y2="73" stroke="white" strokeWidth="1.8" />
+            <line x1="96" y1="79" x2="58" y2="76" stroke="white" strokeWidth="1.8" />
+          </svg>
+          <h1 style={{ margin: 0 }}>Colonias Felinas</h1>
+        </div>
         <RefreshButton />
       </div>
 
