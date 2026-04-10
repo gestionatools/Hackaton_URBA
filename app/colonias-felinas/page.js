@@ -42,10 +42,22 @@ async function syncCentros(supabase, voluntarios, asignaciones) {
     }
   })
 
+  // Preserve existing gatos_numero values before wiping the table
+  const { data: existing } = await supabase
+    .from('HACK_CATS_Centro')
+    .select('centro_gatuno, gatos_numero')
+  const gatosMap = {}
+  if (existing) {
+    existing.forEach((row) => {
+      if (row.centro_gatuno) gatosMap[row.centro_gatuno] = row.gatos_numero
+    })
+  }
+
   const rows = Object.entries(centroMap).map(([centro, { count, perfiles }]) => ({
     centro_gatuno: centro,
     voluntarios_numero: count,
     voluntarios_perfiles: perfiles.join('; '),
+    gatos_numero: gatosMap[centro] ?? null,
   }))
 
   // Wipe table and re-insert computed values

@@ -131,6 +131,77 @@ function AsignacionCentroItem({ centro, asignaciones, voluntariosMap }) {
   )
 }
 
+// ─── Barra indicadora de gatos ────────────────────────────────────────────────
+
+function GatosBar({ value }) {
+  const num = value ?? 0
+  const pct = Math.min(num, 100)
+  const overLimit = num > 100
+  const barColor = overLimit ? '#dc2626' : '#f59e0b'
+  const labelOnBar = pct > 40
+
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flex: 1, minWidth: 0 }}>
+      <span style={{ fontSize: '0.75rem', color: '#6b7280', whiteSpace: 'nowrap' }}>🐱 Gatos:</span>
+      <div
+        style={{
+          flex: 1,
+          height: '16px',
+          background: '#e5e7eb',
+          borderRadius: '8px',
+          overflow: 'visible',
+          position: 'relative',
+          minWidth: '60px',
+        }}
+      >
+        <div
+          style={{
+            width: `${pct}%`,
+            minWidth: num > 0 ? '16px' : '0',
+            height: '100%',
+            background: barColor,
+            borderRadius: '8px',
+            position: 'relative',
+          }}
+        >
+          {labelOnBar && (
+            <span
+              style={{
+                position: 'absolute',
+                right: '6px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                fontSize: '0.7rem',
+                fontWeight: 700,
+                color: '#fff',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              {num}
+            </span>
+          )}
+        </div>
+        {!labelOnBar && (
+          <span
+            style={{
+              position: 'absolute',
+              left: `calc(${pct}% + 6px)`,
+              top: '50%',
+              transform: 'translateY(-50%)',
+              fontSize: '0.7rem',
+              fontWeight: 700,
+              color: '#374151',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            {num}
+          </span>
+        )}
+      </div>
+    </div>
+  )
+}
+
 // ─── Centros (tabla HACK_CATS_Centro) ─────────────────────────────────────────
 
 function CentroInfoItem({ centro }) {
@@ -161,11 +232,12 @@ function CentroInfoItem({ centro }) {
           fontWeight: 600,
         }}
       >
-        <span>{centro.centro_gatuno || '—'}</span>
-        <span style={{ color: '#6b7280', fontWeight: 400, fontSize: '0.85rem' }}>
+        <span style={{ whiteSpace: 'nowrap' }}>{centro.centro_gatuno || '—'}</span>
+        <span style={{ color: '#6b7280', fontWeight: 400, fontSize: '0.85rem', whiteSpace: 'nowrap' }}>
           ({centro.voluntarios_numero ?? 0} voluntario{centro.voluntarios_numero !== 1 ? 's' : ''})
         </span>
-        <span style={{ marginLeft: 'auto', color: PURPLE, fontSize: '0.75rem' }}>
+        <GatosBar value={centro.gatos_numero} />
+        <span style={{ color: PURPLE, fontSize: '0.75rem', flexShrink: 0 }}>
           {open ? '▲' : '▼'}
         </span>
       </button>
@@ -180,6 +252,9 @@ function CentroInfoItem({ centro }) {
         >
           <div style={{ marginBottom: '0.4rem' }}>
             <strong>Nº voluntarios:</strong> {centro.voluntarios_numero ?? '—'}
+          </div>
+          <div style={{ marginBottom: '0.4rem' }}>
+            <strong>Nº gatos:</strong> {centro.gatos_numero ?? '—'}
           </div>
           <div>
             <strong>Perfiles:</strong>{' '}
