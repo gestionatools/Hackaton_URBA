@@ -2,6 +2,8 @@ import { createClient } from '@supabase/supabase-js'
 import ColoniasFelinas from '../components/ColoniasFelinas'
 import RefreshButton from '../components/RefreshButton'
 
+export const dynamic = 'force-dynamic'
+
 function getSupabase() {
   return createClient(
     process.env.SUPABASE_URL,
