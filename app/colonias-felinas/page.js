@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js'
 import ColoniasFelinas from '../components/ColoniasFelinas'
+import RefreshButton from '../components/RefreshButton'
 
 function getSupabase() {
   return createClient(
@@ -100,6 +101,7 @@ export default async function ColoniasFelinasPage() {
           ← Volver
         </a>
         <h1 style={{ margin: 0 }}>Colonias Felinas</h1>
+        <RefreshButton />
       </div>
 
       {errorMsg ? (

@@ -4,6 +4,7 @@ import { useState } from 'react'
 import DataTable from './DataTable'
 import OrdenesTable from './OrdenesTable'
 import ActividadesTable from './ActividadesTable'
+import RefreshButton from './RefreshButton'
 
 const VIEWS = {
   parcelas:    { label: 'Datos Urbanísticos',               color: '#3b82f6' },
@@ -55,6 +56,7 @@ export default function ViewSwitcher({ rowsParcelas, rowsOrdenes, rowsActividade
         >
           Colonias Felinas →
         </a>
+        <RefreshButton />
       </div>
 
       {view === 'parcelas'    && <DataTable rows={rowsParcelas} />}
