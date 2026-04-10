@@ -18,7 +18,7 @@ export default function ViewSwitcher({ rowsParcelas, rowsOrdenes, rowsActividade
 
   return (
     <>
-      <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1.25rem' }}>
+      <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1.25rem', flexWrap: 'wrap', alignItems: 'center' }}>
         {Object.entries(VIEWS).map(([key, { label, color }]) => (
           <button
             key={key}
@@ -38,6 +38,23 @@ export default function ViewSwitcher({ rowsParcelas, rowsOrdenes, rowsActividade
             {label}
           </button>
         ))}
+        <a
+          href="/colonias-felinas"
+          style={{
+            padding: '7px 18px',
+            fontSize: '0.85rem',
+            fontWeight: 600,
+            borderRadius: '6px',
+            border: '2px solid #7c3aed',
+            background: '#f0f4f8',
+            color: '#7c3aed',
+            textDecoration: 'none',
+            transition: 'all 0.15s',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          Colonias Felinas →
+        </a>
       </div>
 
       {view === 'parcelas'    && <DataTable rows={rowsParcelas} />}
