@@ -107,7 +107,7 @@ export default async function ColoniasFelinasPage() {
           href="/"
           style={{
             textDecoration: 'none',
-            color: '#7c3aed',
+            color: '#a78bfa',
             fontWeight: 600,
             fontSize: '0.9rem',
           }}

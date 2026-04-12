@@ -40,7 +40,7 @@ const ALL_COLUMNS = [
 
 const styles = {
   panel: {
-    border: '1px solid #ccc',
+    border: '1px solid #334155',
     borderRadius: '6px',
     marginBottom: '1rem',
     overflow: 'hidden',
@@ -50,7 +50,8 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: '0.6rem 1rem',
-    background: '#f0f4f8',
+    background: '#1e293b',
+    color: '#f1f5f9',
     cursor: 'pointer',
     userSelect: 'none',
     fontWeight: 600,
@@ -58,7 +59,7 @@ const styles = {
   },
   panelBody: {
     padding: '1rem',
-    borderTop: '1px solid #ccc',
+    borderTop: '1px solid #334155',
   },
   grid: {
     display: 'grid',
@@ -72,16 +73,18 @@ const styles = {
   },
   label: {
     fontSize: '0.75rem',
-    color: '#555',
+    color: '#94a3b8',
     fontWeight: 500,
   },
   input: {
     padding: '4px 6px',
     fontSize: '0.8rem',
-    border: '1px solid #bbb',
+    border: '1px solid #475569',
     borderRadius: '4px',
     width: '100%',
     boxSizing: 'border-box',
+    background: '#0f172a',
+    color: '#f1f5f9',
   },
   rangeRow: {
     display: 'flex',
@@ -91,7 +94,7 @@ const styles = {
   sectionTitle: {
     fontSize: '0.78rem',
     fontWeight: 700,
-    color: '#334',
+    color: '#94a3b8',
     textTransform: 'uppercase',
     letterSpacing: '0.04em',
     margin: '0 0 0.5rem',
@@ -99,16 +102,17 @@ const styles = {
   divider: {
     margin: '0.85rem 0',
     border: 'none',
-    borderTop: '1px solid #e0e0e0',
+    borderTop: '1px solid #334155',
   },
   resetBtn: {
     marginTop: '0.85rem',
     padding: '5px 14px',
     fontSize: '0.8rem',
-    background: '#e8ecf0',
-    border: '1px solid #bbb',
+    background: '#1e293b',
+    border: '1px solid #475569',
     borderRadius: '4px',
     cursor: 'pointer',
+    color: '#f1f5f9',
   },
   badge: {
     fontSize: '0.72rem',
@@ -200,7 +204,7 @@ export default function DataTable({ rows }) {
                       value={filters[`${key}_min`] ?? ''}
                       onChange={e => setFilter(`${key}_min`, e.target.value)}
                     />
-                    <span style={{ fontSize: '0.75rem', color: '#888' }}>–</span>
+                    <span style={{ fontSize: '0.75rem', color: '#64748b' }}>–</span>
                     <input
                       type="number"
                       style={styles.input}
@@ -221,7 +225,7 @@ export default function DataTable({ rows }) {
       </div>
 
       {/* Results count */}
-      <p style={{ fontSize: '0.82rem', color: '#555', margin: '0 0 0.5rem' }}>
+      <p style={{ fontSize: '0.82rem', color: '#94a3b8', margin: '0 0 0.5rem' }}>
         {filtered.length} resultado{filtered.length !== 1 ? 's' : ''}
         {filtered.length !== rows.length && ` de ${rows.length}`}
       </p>
@@ -237,7 +241,7 @@ export default function DataTable({ rows }) {
                 {ALL_COLUMNS.map(col => (
                   <th
                     key={col}
-                    style={{ border: '1px solid #ccc', padding: '4px 8px', background: '#f0f0f0', whiteSpace: 'nowrap' }}
+                    style={{ border: '1px solid #334155', padding: '4px 8px', background: '#1e3a5f', color: '#e2e8f0', whiteSpace: 'nowrap' }}
                   >
                     {col}
                   </th>
@@ -248,7 +252,7 @@ export default function DataTable({ rows }) {
               {filtered.map(row => (
                 <tr key={row.ID}>
                   {ALL_COLUMNS.map(col => (
-                    <td key={col} style={{ border: '1px solid #ccc', padding: '4px 8px', whiteSpace: 'nowrap' }}>
+                    <td key={col} style={{ border: '1px solid #334155', padding: '4px 8px', whiteSpace: 'nowrap', color: '#f1f5f9' }}>
                       {col === 'doc_url' && row[col]
                         ? <a href={row[col]} target="_blank" rel="noreferrer">ver</a>
                         : row[col] ?? ''}
