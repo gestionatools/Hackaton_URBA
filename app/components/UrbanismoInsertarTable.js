@@ -36,7 +36,9 @@ function formatDate(value) {
   if (!value) return '—'
   const d = new Date(value)
   if (isNaN(d)) return value
-  return d.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
+  const date = d.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
+  const time = d.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })
+  return `${date} - ${time}`
 }
 
 export default function UrbanismoInsertarTable({ rows = [] }) {
