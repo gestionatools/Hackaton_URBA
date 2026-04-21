@@ -58,6 +58,23 @@ export default function ViewSwitcher({ rowsParcelas, rowsOrdenes, rowsActividade
         >
           Colonias Felinas →
         </a>
+        <a
+          href="/prova-conceito-integracoes"
+          style={{
+            padding: '7px 18px',
+            fontSize: '0.85rem',
+            fontWeight: 600,
+            borderRadius: '6px',
+            border: '2px solid #7c3aed',
+            background: '#f0f4f8',
+            color: '#7c3aed',
+            textDecoration: 'none',
+            transition: 'all 0.15s',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          Prova de conceito integrações →
+        </a>
         <RefreshButton />
       </div>
 
