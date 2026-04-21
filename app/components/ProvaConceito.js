@@ -11,10 +11,11 @@ const COLUMNS = [
   { key: 'Documento_URL',           label: 'Documento' },
 ]
 
-function ensureAbsolute(url) {
-  if (!url) return url
-  if (/^https?:\/\//i.test(url)) return url
-  return 'https://' + url
+const SUPABASE_STORAGE = 'https://wowmmkjpfigdkiwgvyfo.supabase.co/storage/v1/object/public/PT_Docs'
+
+function pdfUrl(codigo) {
+  if (!codigo) return null
+  return `${SUPABASE_STORAGE}/${String(codigo).replace(/\//g, '')}.pdf`
 }
 
 function DocIcon({ url }) {
@@ -185,7 +186,7 @@ export default function ProvaConceito({ rows = [] }) {
                   <td style={{ ...tdStyle, whiteSpace: 'nowrap' }}>{formatDate(row.ExpedienteFechaApertura)}</td>
                   <td style={tdStyle}>{row.ExpedienteAsunto ?? '—'}</td>
                   <td style={{ ...tdStyle, textAlign: 'center' }}>
-                    <DocIcon url={row.Documento_URL} />
+                    <DocIcon url={pdfUrl(row.ExpedienteCodigo)} />
                   </td>
                 </tr>
               ))
