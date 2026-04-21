@@ -12,21 +12,24 @@ function getSupabase() {
 
 async function getAllData() {
   const supabase = getSupabase()
-  const [parcelas, ordenes, actividades] = await Promise.all([
+  const [parcelas, ordenes, actividades, urbanismo] = await Promise.all([
     supabase.from('HACK_URBA_1').select('*'),
     supabase.from('HACK_URBA_Ordenes_ejecucion').select('*'),
     supabase.from('HACK_URBA_ACTIVIDADES').select('*'),
+    supabase.from('PT_Urbanismo_Insertar').select('*'),
   ])
   if (parcelas.error) throw new Error(parcelas.error.message)
   if (ordenes.error) throw new Error(ordenes.error.message)
   if (actividades.error) throw new Error(actividades.error.message)
-  return { parcelas: parcelas.data, ordenes: ordenes.data, actividades: actividades.data }
+  if (urbanismo.error) throw new Error(urbanismo.error.message)
+  return { parcelas: parcelas.data, ordenes: ordenes.data, actividades: actividades.data, urbanismo: urbanismo.data }
 }
 
 export default async function Home() {
   let parcelas = []
   let ordenes = []
   let actividades = []
+  let urbanismo = []
   let errorMsg = null
 
   try {
@@ -34,6 +37,7 @@ export default async function Home() {
     parcelas = data.parcelas
     ordenes = data.ordenes
     actividades = data.actividades
+    urbanismo = data.urbanismo
   } catch (e) {
     errorMsg = e.message
   }
@@ -45,7 +49,7 @@ export default async function Home() {
         <p style={{ color: 'red' }}>Error: {errorMsg}</p>
       )}
       {!errorMsg && (
-        <ViewSwitcher rowsParcelas={parcelas} rowsOrdenes={ordenes} rowsActividades={actividades} />
+        <ViewSwitcher rowsParcelas={parcelas} rowsOrdenes={ordenes} rowsActividades={actividades} rowsUrbanismo={urbanismo} />
       )}
     </main>
   )
