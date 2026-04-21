@@ -5,16 +5,22 @@ import { useState, useMemo } from 'react'
 const COLOR = '#0ea5e9'
 
 const COLUMNS = [
-  { key: 'EExpedienteCodigo',      label: 'Código Expediente' },
+  { key: 'ExpedienteCodigo',        label: 'Código Expediente' },
   { key: 'ExpedienteFechaApertura', label: 'Fecha Apertura' },
   { key: 'ExpedienteAsunto',        label: 'Asunto' },
   { key: 'Documento_URL',           label: 'Documento' },
 ]
 
+function ensureAbsolute(url) {
+  if (!url) return url
+  if (/^https?:\/\//i.test(url)) return url
+  return 'https://' + url
+}
+
 function DocIcon({ url }) {
   if (!url) return <span style={{ color: '#aaa' }}>—</span>
   return (
-    <a href={url} target="_blank" rel="noopener noreferrer" title="Ver documento" style={{ color: COLOR, display: 'inline-flex', alignItems: 'center' }}>
+    <a href={ensureAbsolute(url)} target="_blank" rel="noopener noreferrer" title="Ver documento" style={{ color: COLOR, display: 'inline-flex', alignItems: 'center' }}>
       <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
         <polyline points="14 2 14 8 20 8"/>
@@ -34,14 +40,14 @@ function formatDate(value) {
 }
 
 export default function UrbanismoInsertarTable({ rows = [] }) {
-  const [filters, setFilters] = useState({ EExpedienteCodigo: '', ExpedienteAsunto: '' })
+  const [filters, setFilters] = useState({ ExpedienteCodigo: '', ExpedienteAsunto: '' })
   const [open, setOpen] = useState(false)
 
   const activeCount = Object.values(filters).filter(Boolean).length
 
   const filtered = useMemo(() => {
     return rows.filter(row => {
-      if (filters.EExpedienteCodigo && !String(row.EExpedienteCodigo ?? '').toLowerCase().includes(filters.EExpedienteCodigo.toLowerCase())) return false
+      if (filters.ExpedienteCodigo && !String(row.ExpedienteCodigo ?? '').toLowerCase().includes(filters.ExpedienteCodigo.toLowerCase())) return false
       if (filters.ExpedienteAsunto && !String(row.ExpedienteAsunto ?? '').toLowerCase().includes(filters.ExpedienteAsunto.toLowerCase())) return false
       return true
     })
@@ -115,7 +121,7 @@ export default function UrbanismoInsertarTable({ rows = [] }) {
           border: `1px solid #bae6fd`,
         }}>
           {[
-            { key: 'EExpedienteCodigo', label: 'Código Expediente' },
+            { key: 'ExpedienteCodigo', label: 'Código Expediente' },
             { key: 'ExpedienteAsunto',   label: 'Asunto' },
           ].map(({ key, label }) => (
             <label key={key} style={{ display: 'flex', flexDirection: 'column', gap: '3px', fontSize: '0.78rem', fontWeight: 600, color: '#0369a1' }}>
@@ -136,7 +142,7 @@ export default function UrbanismoInsertarTable({ rows = [] }) {
           ))}
           {activeCount > 0 && (
             <button
-              onClick={() => setFilters({ EExpedienteCodigo: '', ExpedienteAsunto: '' })}
+              onClick={() => setFilters({ ExpedienteCodigo: '', ExpedienteAsunto: '' })}
               style={{
                 alignSelf: 'flex-end',
                 padding: '4px 12px',
@@ -175,7 +181,7 @@ export default function UrbanismoInsertarTable({ rows = [] }) {
             ) : (
               filtered.map((row, i) => (
                 <tr key={row.id ?? i} style={{ background: i % 2 === 0 ? '#fff' : '#f8fafc' }}>
-                  <td style={tdStyle}>{row.EExpedienteCodigo ?? '—'}</td>
+                  <td style={tdStyle}>{row.ExpedienteCodigo ?? '—'}</td>
                   <td style={{ ...tdStyle, whiteSpace: 'nowrap' }}>{formatDate(row.ExpedienteFechaApertura)}</td>
                   <td style={tdStyle}>{row.ExpedienteAsunto ?? '—'}</td>
                   <td style={{ ...tdStyle, textAlign: 'center' }}>
