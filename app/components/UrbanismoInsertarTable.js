@@ -11,16 +11,15 @@ const COLUMNS = [
   { key: 'Documento_URL',           label: 'Documento' },
 ]
 
-function ensureAbsolute(url) {
-  if (!url) return url
-  if (/^https?:\/\//i.test(url)) return url
-  return 'https://' + url
+function getPdfUrl(codigo) {
+  if (!codigo) return null
+  return `https://wowmmkjpfigdkiwgvyfo.supabase.co/storage/v1/object/public/PT_Docs/${String(codigo).replace('/', '')}.pdf`
 }
 
 function DocIcon({ url }) {
   if (!url) return <span style={{ color: '#aaa' }}>—</span>
   return (
-    <a href={ensureAbsolute(url)} target="_blank" rel="noopener noreferrer" title="Ver documento" style={{ color: COLOR, display: 'inline-flex', alignItems: 'center' }}>
+    <a href={url} target="_blank" rel="noopener noreferrer" title="Ver documento" style={{ color: COLOR, display: 'inline-flex', alignItems: 'center' }}>
       <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
         <polyline points="14 2 14 8 20 8"/>
@@ -185,7 +184,7 @@ export default function UrbanismoInsertarTable({ rows = [] }) {
                   <td style={{ ...tdStyle, whiteSpace: 'nowrap' }}>{formatDate(row.ExpedienteFechaApertura)}</td>
                   <td style={tdStyle}>{row.ExpedienteAsunto ?? '—'}</td>
                   <td style={{ ...tdStyle, textAlign: 'center' }}>
-                    <DocIcon url={row.Documento_URL} />
+                    <DocIcon url={getPdfUrl(row.ExpedienteCodigo)} />
                   </td>
                 </tr>
               ))
