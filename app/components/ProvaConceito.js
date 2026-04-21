@@ -36,7 +36,9 @@ function formatDate(value) {
   if (!value) return '—'
   const d = new Date(value)
   if (isNaN(d)) return value
-  return d.toLocaleDateString('pt-PT', { day: '2-digit', month: '2-digit', year: 'numeric' })
+  const date = d.toLocaleDateString('pt-PT', { day: '2-digit', month: '2-digit', year: 'numeric' })
+  const time = d.toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })
+  return `${date} - ${time}`
 }
 
 export default function ProvaConceito({ rows = [] }) {
