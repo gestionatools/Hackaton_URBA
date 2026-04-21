@@ -4,15 +4,17 @@ import { useState } from 'react'
 import DataTable from './DataTable'
 import OrdenesTable from './OrdenesTable'
 import ActividadesTable from './ActividadesTable'
+import UrbanismoInsertarTable from './UrbanismoInsertarTable'
 import RefreshButton from './RefreshButton'
 
 const VIEWS = {
   parcelas:    { label: 'Datos Urbanísticos',               color: '#3b82f6' },
   ordenes:     { label: 'Órdenes de ejecución realizadas',  color: '#f59e0b' },
   actividades: { label: 'Actividades',                       color: '#16a34a' },
+  urbanismo:   { label: 'Inserción Urbanismo',               color: '#0ea5e9' },
 }
 
-export default function ViewSwitcher({ rowsParcelas, rowsOrdenes, rowsActividades }) {
+export default function ViewSwitcher({ rowsParcelas, rowsOrdenes, rowsActividades, rowsUrbanismo }) {
   const [view, setView] = useState('parcelas')
 
   const activeColor = VIEWS[view].color
@@ -62,6 +64,7 @@ export default function ViewSwitcher({ rowsParcelas, rowsOrdenes, rowsActividade
       {view === 'parcelas'    && <DataTable rows={rowsParcelas} />}
       {view === 'ordenes'     && <OrdenesTable rows={rowsOrdenes} />}
       {view === 'actividades' && <ActividadesTable rows={rowsActividades} />}
+      {view === 'urbanismo'   && <UrbanismoInsertarTable rows={rowsUrbanismo} />}
     </>
   )
 }
