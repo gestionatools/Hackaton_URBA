@@ -10,7 +10,7 @@ function VoluntarioItem({ voluntario }) {
   const [open, setOpen] = useState(false)
 
   return (
-    <div style={{ border: '1px solid #ddd', borderRadius: '6px', marginBottom: '0.4rem', overflow: 'hidden' }}>
+    <div style={{ border: '1px solid #334155', borderRadius: '6px', marginBottom: '0.4rem', overflow: 'hidden' }}>
       <button
         onClick={() => setOpen(!open)}
         style={{
@@ -20,14 +20,15 @@ function VoluntarioItem({ voluntario }) {
           display: 'flex',
           alignItems: 'center',
           gap: '1rem',
-          background: open ? '#f3e8ff' : '#fafafa',
+          background: open ? '#2d1f4e' : '#1e293b',
           border: 'none',
           cursor: 'pointer',
           fontSize: '0.9rem',
           fontWeight: 600,
+          color: '#f1f5f9',
         }}
       >
-        <span style={{ color: '#6b7280', minWidth: '130px', fontFamily: 'monospace' }}>
+        <span style={{ color: '#94a3b8', minWidth: '130px', fontFamily: 'monospace' }}>
           {voluntario.voluntario_nif || '—'}
         </span>
         <span>{voluntario.voluntario_nombre || '—'}</span>
@@ -39,12 +40,12 @@ function VoluntarioItem({ voluntario }) {
         <div
           style={{
             padding: '0.75rem 1rem',
-            background: '#fff',
+            background: '#0f172a',
             fontSize: '0.875rem',
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
             gap: '0.5rem',
-            borderTop: '1px solid #e5e7eb',
+            borderTop: '1px solid #334155',
           }}
         >
           <div><strong>Teléfono:</strong> {voluntario.voluntario_tlf || '—'}</div>
@@ -68,7 +69,7 @@ function AsignacionCentroItem({ centro, asignaciones, voluntariosMap }) {
   const count = asignaciones.length
 
   return (
-    <div style={{ border: '1px solid #ddd', borderRadius: '6px', marginBottom: '0.4rem', overflow: 'hidden' }}>
+    <div style={{ border: '1px solid #334155', borderRadius: '6px', marginBottom: '0.4rem', overflow: 'hidden' }}>
       <button
         onClick={() => setOpen(!open)}
         style={{
@@ -78,15 +79,16 @@ function AsignacionCentroItem({ centro, asignaciones, voluntariosMap }) {
           display: 'flex',
           alignItems: 'center',
           gap: '0.75rem',
-          background: open ? '#f3e8ff' : '#fafafa',
+          background: open ? '#2d1f4e' : '#1e293b',
           border: 'none',
           cursor: 'pointer',
           fontSize: '0.9rem',
           fontWeight: 600,
+          color: '#f1f5f9',
         }}
       >
         <span>{centro}</span>
-        <span style={{ color: '#6b7280', fontWeight: 400, fontSize: '0.85rem' }}>
+        <span style={{ color: '#94a3b8', fontWeight: 400, fontSize: '0.85rem' }}>
           ({count} voluntario{count !== 1 ? 's' : ''})
         </span>
         <span style={{ marginLeft: 'auto', color: PURPLE, fontSize: '0.75rem' }}>
@@ -94,7 +96,7 @@ function AsignacionCentroItem({ centro, asignaciones, voluntariosMap }) {
         </span>
       </button>
       {open && (
-        <div style={{ background: '#f9fafb', borderTop: '1px solid #e5e7eb' }}>
+        <div style={{ background: '#1e293b', borderTop: '1px solid #334155' }}>
           {asignaciones.map((asig) => {
             const v = voluntariosMap[asig['voluntario_NIF']] || {}
             return (
@@ -102,7 +104,7 @@ function AsignacionCentroItem({ centro, asignaciones, voluntariosMap }) {
                 key={asig.id}
                 style={{
                   padding: '0.6rem 1rem',
-                  borderBottom: '1px solid #e5e7eb',
+                  borderBottom: '1px solid #334155',
                   fontSize: '0.875rem',
                   display: 'grid',
                   gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
@@ -142,12 +144,12 @@ function GatosBar({ value }) {
 
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flex: 1, minWidth: 0 }}>
-      <span style={{ fontSize: '0.75rem', color: '#6b7280', whiteSpace: 'nowrap' }}>🐱 Gatos:</span>
+      <span style={{ fontSize: '0.75rem', color: '#94a3b8', whiteSpace: 'nowrap' }}>🐱 Gatos:</span>
       <div
         style={{
           flex: 1,
           height: '16px',
-          background: '#e5e7eb',
+          background: '#374151',
           borderRadius: '8px',
           overflow: 'visible',
           position: 'relative',
@@ -190,7 +192,7 @@ function GatosBar({ value }) {
               transform: 'translateY(-50%)',
               fontSize: '0.7rem',
               fontWeight: 700,
-              color: '#374151',
+              color: '#e2e8f0',
               whiteSpace: 'nowrap',
             }}
           >
@@ -215,7 +217,7 @@ function CentroInfoItem({ centro }) {
     : []
 
   return (
-    <div style={{ border: '1px solid #ddd', borderRadius: '6px', marginBottom: '0.4rem', overflow: 'hidden' }}>
+    <div style={{ border: '1px solid #334155', borderRadius: '6px', marginBottom: '0.4rem', overflow: 'hidden' }}>
       <button
         onClick={() => setOpen(!open)}
         style={{
@@ -225,15 +227,16 @@ function CentroInfoItem({ centro }) {
           display: 'flex',
           alignItems: 'center',
           gap: '0.75rem',
-          background: open ? '#f3e8ff' : '#fafafa',
+          background: open ? '#2d1f4e' : '#1e293b',
           border: 'none',
           cursor: 'pointer',
           fontSize: '0.9rem',
           fontWeight: 600,
+          color: '#f1f5f9',
         }}
       >
         <span style={{ whiteSpace: 'nowrap' }}>{centro.centro_gatuno || '—'}</span>
-        <span style={{ color: '#6b7280', fontWeight: 400, fontSize: '0.85rem', whiteSpace: 'nowrap' }}>
+        <span style={{ color: '#94a3b8', fontWeight: 400, fontSize: '0.85rem', whiteSpace: 'nowrap' }}>
           ({centro.voluntarios_numero ?? 0} voluntario{centro.voluntarios_numero !== 1 ? 's' : ''})
         </span>
         <GatosBar value={centro.gatos_numero} />
@@ -245,9 +248,9 @@ function CentroInfoItem({ centro }) {
         <div
           style={{
             padding: '0.75rem 1rem',
-            background: '#fff',
+            background: '#0f172a',
             fontSize: '0.875rem',
-            borderTop: '1px solid #e5e7eb',
+            borderTop: '1px solid #334155',
           }}
         >
           <div style={{ marginBottom: '0.4rem' }}>
@@ -259,15 +262,15 @@ function CentroInfoItem({ centro }) {
           <div>
             <strong>Perfiles:</strong>{' '}
             {perfiles.length === 0 ? (
-              <span style={{ color: '#999' }}>Sin perfiles registrados</span>
+              <span style={{ color: '#64748b' }}>Sin perfiles registrados</span>
             ) : (
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem', marginTop: '0.4rem' }}>
                 {perfiles.map((p, i) => (
                   <span
                     key={i}
                     style={{
-                      background: '#ede9fe',
-                      color: '#5b21b6',
+                      background: '#3b0764',
+                      color: '#d8b4fe',
                       borderRadius: '4px',
                       padding: '2px 8px',
                       fontSize: '0.8rem',
@@ -322,9 +325,9 @@ export default function ColoniasFelinas({ voluntarios, asignaciones, centros }) 
               fontWeight: 600,
               borderRadius: '6px',
               cursor: 'pointer',
-              border: view === key ? `2px solid ${PURPLE}` : '2px solid #ccc',
-              background: view === key ? PURPLE : '#f0f4f8',
-              color: view === key ? '#fff' : '#333',
+              border: view === key ? `2px solid ${PURPLE}` : '2px solid #334155',
+              background: view === key ? PURPLE : '#1e293b',
+              color: view === key ? '#fff' : '#cbd5e1',
               transition: 'all 0.15s',
             }}
           >
@@ -335,21 +338,21 @@ export default function ColoniasFelinas({ voluntarios, asignaciones, centros }) 
 
       {view === 'voluntarios' && (
         <div>
-          <p style={{ fontSize: '0.85rem', color: '#666', marginBottom: '0.75rem' }}>
+          <p style={{ fontSize: '0.85rem', color: '#94a3b8', marginBottom: '0.75rem' }}>
             {voluntarios.length} voluntario{voluntarios.length !== 1 ? 's' : ''} registrado{voluntarios.length !== 1 ? 's' : ''}
           </p>
           {voluntarios.map((v) => (
             <VoluntarioItem key={v.id} voluntario={v} />
           ))}
           {voluntarios.length === 0 && (
-            <p style={{ color: '#999' }}>Sin datos de voluntarios.</p>
+            <p style={{ color: '#64748b' }}>Sin datos de voluntarios.</p>
           )}
         </div>
       )}
 
       {view === 'asignaciones' && (
         <div>
-          <p style={{ fontSize: '0.85rem', color: '#666', marginBottom: '0.75rem' }}>
+          <p style={{ fontSize: '0.85rem', color: '#94a3b8', marginBottom: '0.75rem' }}>
             {Object.keys(centrosAgrupados).length} centro{Object.keys(centrosAgrupados).length !== 1 ? 's' : ''} gatuño{Object.keys(centrosAgrupados).length !== 1 ? 's' : ''}
           </p>
           {Object.entries(centrosAgrupados).map(([centro, asigs]) => (
@@ -361,21 +364,21 @@ export default function ColoniasFelinas({ voluntarios, asignaciones, centros }) 
             />
           ))}
           {Object.keys(centrosAgrupados).length === 0 && (
-            <p style={{ color: '#999' }}>Sin asignaciones registradas.</p>
+            <p style={{ color: '#64748b' }}>Sin asignaciones registradas.</p>
           )}
         </div>
       )}
 
       {view === 'centros' && (
         <div>
-          <p style={{ fontSize: '0.85rem', color: '#666', marginBottom: '0.75rem' }}>
+          <p style={{ fontSize: '0.85rem', color: '#94a3b8', marginBottom: '0.75rem' }}>
             {centros.length} centro{centros.length !== 1 ? 's' : ''} gatuño{centros.length !== 1 ? 's' : ''} — datos recalculados al cargar la página
           </p>
           {centros.map((c) => (
             <CentroInfoItem key={c.id} centro={c} />
           ))}
           {centros.length === 0 && (
-            <p style={{ color: '#999' }}>Sin centros registrados.</p>
+            <p style={{ color: '#64748b' }}>Sin centros registrados.</p>
           )}
         </div>
       )}

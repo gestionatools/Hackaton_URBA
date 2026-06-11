@@ -32,9 +32,9 @@ export default function ViewSwitcher({ rowsParcelas, rowsOrdenes, rowsActividade
               fontWeight: 600,
               borderRadius: '6px',
               cursor: 'pointer',
-              border: view === key ? `2px solid ${color}` : '2px solid #ccc',
-              background: view === key ? color : '#f0f4f8',
-              color: view === key ? '#fff' : '#333',
+              border: view === key ? `2px solid ${color}` : '2px solid #334155',
+              background: view === key ? color : '#1e293b',
+              color: view === key ? '#fff' : '#cbd5e1',
               transition: 'all 0.15s',
             }}
           >
@@ -49,8 +49,8 @@ export default function ViewSwitcher({ rowsParcelas, rowsOrdenes, rowsActividade
             fontWeight: 600,
             borderRadius: '6px',
             border: '2px solid #7c3aed',
-            background: '#f0f4f8',
-            color: '#7c3aed',
+            background: '#1e293b',
+            color: '#a78bfa',
             textDecoration: 'none',
             transition: 'all 0.15s',
             whiteSpace: 'nowrap',

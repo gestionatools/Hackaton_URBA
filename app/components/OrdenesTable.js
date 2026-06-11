@@ -4,7 +4,7 @@ import { useState, useMemo } from 'react'
 
 const styles = {
   panel: {
-    border: '1px solid #ccc',
+    border: '1px solid #334155',
     borderRadius: '6px',
     marginBottom: '1rem',
     overflow: 'hidden',
@@ -14,7 +14,8 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: '0.6rem 1rem',
-    background: '#f0f4f8',
+    background: '#1e293b',
+    color: '#f1f5f9',
     cursor: 'pointer',
     userSelect: 'none',
     fontWeight: 600,
@@ -22,7 +23,7 @@ const styles = {
   },
   panelBody: {
     padding: '1rem',
-    borderTop: '1px solid #ccc',
+    borderTop: '1px solid #334155',
   },
   grid: {
     display: 'grid',
@@ -36,16 +37,18 @@ const styles = {
   },
   label: {
     fontSize: '0.75rem',
-    color: '#555',
+    color: '#94a3b8',
     fontWeight: 500,
   },
   input: {
     padding: '4px 6px',
     fontSize: '0.8rem',
-    border: '1px solid #bbb',
+    border: '1px solid #475569',
     borderRadius: '4px',
     width: '100%',
     boxSizing: 'border-box',
+    background: '#0f172a',
+    color: '#f1f5f9',
   },
   badge: {
     fontSize: '0.72rem',
@@ -64,10 +67,11 @@ const styles = {
     marginTop: '0.85rem',
     padding: '5px 14px',
     fontSize: '0.8rem',
-    background: '#e8ecf0',
-    border: '1px solid #bbb',
+    background: '#1e293b',
+    border: '1px solid #475569',
     borderRadius: '4px',
     cursor: 'pointer',
+    color: '#f1f5f9',
   },
 }
 
@@ -129,7 +133,7 @@ export default function OrdenesTable({ rows }) {
         )}
       </div>
 
-      <p style={{ fontSize: '0.82rem', color: '#555', margin: '0 0 0.5rem' }}>
+      <p style={{ fontSize: '0.82rem', color: '#94a3b8', margin: '0 0 0.5rem' }}>
         {filtered.length} resultado{filtered.length !== 1 ? 's' : ''}
         {filtered.length !== rows.length && ` de ${rows.length}`}
       </p>
@@ -144,7 +148,7 @@ export default function OrdenesTable({ rows }) {
                 {columns.map(col => (
                   <th
                     key={col}
-                    style={{ border: '1px solid #ccc', padding: '4px 8px', background: '#fef3c7', whiteSpace: 'nowrap' }}
+                    style={{ border: '1px solid #334155', padding: '4px 8px', background: '#451a03', color: '#fed7aa', whiteSpace: 'nowrap' }}
                   >
                     {col}
                   </th>
@@ -155,7 +159,7 @@ export default function OrdenesTable({ rows }) {
               {filtered.map((row, i) => (
                 <tr key={row.ID ?? row.id ?? i}>
                   {columns.map(col => (
-                    <td key={col} style={{ border: '1px solid #ccc', padding: '4px 8px', whiteSpace: 'nowrap' }}>
+                    <td key={col} style={{ border: '1px solid #334155', padding: '4px 8px', whiteSpace: 'nowrap', color: '#f1f5f9' }}>
                       {row[col] ?? ''}
                     </td>
                   ))}
